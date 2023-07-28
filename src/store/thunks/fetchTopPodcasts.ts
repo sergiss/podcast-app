@@ -24,7 +24,7 @@ const processTopPodcastData = (data: any) => {
 };
 
 /**
- * Thunks to fetches the top podcasts from the API and stores them in localStorage
+ * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
  */
 const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, {}>(
   "podcast/fetchTopPodcasts",

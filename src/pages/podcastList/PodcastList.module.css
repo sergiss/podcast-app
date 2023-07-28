@@ -1,0 +1,93 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.filter {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    justify-content: right;
+}
+
+.filter span {
+    background-color: #3975ad;
+    color: white;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 0px 8px 2px 8px;
+    border-radius: 15px;
+}
+
+.filter input {
+    border: 1px solid #3975ad;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 1.2rem;
+}
+
+.list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-rows: 1fr;
+    gap: 20px
+}
+
+.podcast {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    padding: 5px 10px;
+
+    transition: all 0.3s ease;
+}
+
+.podcast::before {
+    content: "";
+    position: absolute;
+    top: 25%;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    box-shadow: 3px 3px 3px 0px #8080804d,
+               -3px 3px 3px 0px #8080804d;
+
+    z-index: -1;
+
+    border-radius: 2px;
+}
+
+.podcast:hover {
+    background-image: linear-gradient(to bottom, #ffffff, #aeaeae4d);
+}
+
+.podcast h2 {
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    line-height: 1.2em;
+    max-height: 2.4em;
+
+    color: black
+}
+
+.podcast p {
+
+    flex: 1;
+    color: #5b5b5b;
+    font-weight: bold;
+}
+
+.podcast img {
+    width: 50%;
+    border-radius: 50%;
+    padding: 10px;
+}

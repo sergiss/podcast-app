@@ -7,6 +7,9 @@ import memoize from "../../utils/memoize";
 
 const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
 
+/**
+ * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
+ */
 const fetchPodcastDetail = createAsyncThunk<{ podcastDetail: PodcastDetail }, string, {}>(
     "podcastDetail/fetchPodcastDetail",
     async (id, { rejectWithValue, getState, dispatch }) => {
