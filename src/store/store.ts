@@ -1,10 +1,11 @@
 import { configureStore } from '@reduxjs/toolkit';
 import podcastListReducer from './slices/podcastListSlice'; 
 import podcastDetailReducer from './slices/podcastDetailSlice';
-
+import globalReducer from './slices/globalSlice';
 
 const store = configureStore({
   reducer: {
+    global: globalReducer,
     podcastList: podcastListReducer,
     podcastDetail: podcastDetailReducer,
   }

@@ -76,12 +76,10 @@
     overflow: hidden;
     line-height: 1.2em;
     max-height: 2.4em;
-
     color: black
 }
 
 .podcast p {
-
     flex: 1;
     color: #5b5b5b;
     font-weight: bold;

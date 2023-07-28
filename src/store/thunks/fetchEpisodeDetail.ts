@@ -5,6 +5,7 @@ import { RootState } from "../store";
 import fetchTopPodcasts from "./fetchTopPodcasts";
 import memoize from "../../utils/memoize";
 import fetchPodcastDetail from "./fetchPodcastDetail";
+import { setLoading } from "../slices/globalSlice";
 
 const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
 
@@ -15,7 +16,7 @@ const fetchEpisodeDetail = createAsyncThunk<{ episode: Episode }, { podcastId: s
     "podcastDetail/fetchEpisodeDetail",
     async ({ podcastId, episodeId }, { rejectWithValue, getState, dispatch }) => {
         try {
-
+            dispatch(setLoading(true));
             let { podcastDetail } = (getState() as RootState).podcastDetail;
             if (!podcastDetail || podcastDetail.id !== podcastId) { 
                 const { payload } = await dispatch(fetchPodcastDetail(podcastId)) as { payload: { podcastDetail: PodcastDetail } };
@@ -27,8 +28,10 @@ const fetchEpisodeDetail = createAsyncThunk<{ episode: Episode }, { podcastId: s
 
             return { episode };
         } catch (error) {
-            console.error('Error fetching the podcast:', error);
+            console.error('Error fetching data:', error);
             return rejectWithValue(error);
+        } finally {
+            dispatch(setLoading(false));
         }
     }
 );

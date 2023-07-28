@@ -14,7 +14,7 @@ const EpisodeList = ({ podcastId, episodes }: EpisodeListProps) => {
   const episodeCount = episodes?.length || 0;
 
   const handleClick = (episode: Episode) => {
-    navigate(`/podcast/${podcastId}/episode/${episode.id}`);
+    navigate(`/podcast/${encodeURIComponent(podcastId)}/episode/${encodeURIComponent(episode.id)}`);
   }
 
   return (

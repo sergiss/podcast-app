@@ -1,14 +1,18 @@
 .header {
-    color: var(--font-blue);
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
     padding: 0 10px;
-    margin-bottom: 20px;
+    margin-bottom: 5px;
     border-bottom: 2px solid #f0f0f0;
 }
 
 .title {
+    text-decoration: none;
+}
+
+.title h1 {
+    color: var(--font-blue);
     margin: 10px 0;
 }

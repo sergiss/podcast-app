@@ -2,6 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getTopPodcasts } from "../../utils/api";
 import { Podcast } from "../types";
 import memoize from "../../utils/memoize";
+import { setLoading } from "../slices/globalSlice";
 
 const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
 
@@ -23,13 +24,18 @@ const processTopPodcastData = (data: any) => {
   });
 };
 
+const simulateSlowNetwork = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
+
 /**
  * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
  */
 const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, {}>(
   "podcast/fetchTopPodcasts",
-  async (_arg, { rejectWithValue }) => {
+  async (_arg, { dispatch, rejectWithValue }) => {
     try {
+      dispatch(setLoading(true));
+
+      await simulateSlowNetwork(5000); // simulate slow network
 
       const podcasts = await memoize<Podcast[]>({
         key: `topPodcasts`,
@@ -44,8 +50,10 @@ const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, {}>(
 
       return { podcasts };
     } catch (error) {
-      console.error('Error fetching the podcasts:', error);
+      console.error('Error fetching data:', error);
       return rejectWithValue(error);
+    } finally {
+      dispatch(setLoading(false));
     }
   }
 );

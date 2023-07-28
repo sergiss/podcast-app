@@ -1,0 +1,18 @@
+@keyframes blast {
+    0% {
+        opacity: 0.1;
+        transform: scale(0.1);
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.75;
+    }
+}
+
+.loader {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: var(--font-blue);
+    animation: blast 1.5s infinite ease-out;
+}

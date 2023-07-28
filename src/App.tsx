@@ -1,6 +1,7 @@
 import React from 'react'
 import {
   BrowserRouter,
+  Navigate,
   Route,
   Routes,
 } from "react-router-dom";
@@ -27,6 +28,7 @@ const App = () => {
             path="/podcast/:podcastId/episode/:episodeId"
             element={<EpisodeDetail />}
           />
+          <Route path="*" element={<Navigate to="/" />} />
         </Route>
       </Routes>
     </BrowserRouter>

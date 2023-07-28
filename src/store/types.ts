@@ -27,3 +27,7 @@ export interface PodcastDetailState {
     podcastDetail: PodcastDetail | null;
     selectedEpisode: Episode | null;
 }
+
+export interface GlobalState {
+    loading: boolean;
+}

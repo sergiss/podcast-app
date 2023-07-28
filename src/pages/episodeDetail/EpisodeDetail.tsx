@@ -13,12 +13,14 @@ const EpisodeDetail = () => {
     const { podcastId, episodeId } = useParams();
     const { selectedEpisode, podcastDetail } = useSelector((state: RootState) => state.podcastDetail);
 
+    const { loading } = useSelector((state: any) => state.global);
+
     useEffect(() => {
         if (!podcastId || !episodeId) return;
         dispatch(fetchEpisodeDetail({ podcastId, episodeId }));
-    }, []);
+    }, [podcastId, episodeId]);
 
-    if (!podcastDetail || !selectedEpisode) return null;
+    if (!podcastDetail || !selectedEpisode || loading) return null;
 
     const { image, title, author, summary } = podcastDetail;
 
