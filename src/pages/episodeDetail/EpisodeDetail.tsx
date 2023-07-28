@@ -3,35 +3,29 @@ import { useParams } from 'react-router-dom';
 import { RootState, dispatch } from "../../store";
 import { fetchEpisodeDetail } from '../../store/thunks';
 import { useSelector } from 'react-redux';
+import PodcastCard from '../../components/podcastCard';
+import Episode from '../../components/episode';
 
 import styles from './EpisodeDetail.module.css'
 
 const EpisodeDetail = () => {
 
     const { podcastId, episodeId } = useParams();
-
-    const { selectedEpisode } = useSelector((state: RootState) => state.podcastDetail );
+    const { selectedEpisode, podcastDetail } = useSelector((state: RootState) => state.podcastDetail);
 
     useEffect(() => {
         if (!podcastId || !episodeId) return;
         dispatch(fetchEpisodeDetail({ podcastId, episodeId }));
-    }, [])
+    }, []);
+
+    if (!podcastDetail || !selectedEpisode) return null;
+
+    const { image, title, author, summary } = podcastDetail;
 
     return (
-        <div>
-            <h1>EpisodeDetail</h1>
-            <p>Podcast ID: {podcastId}</p>
-            <p>Episode ID: {episodeId}</p>
-
-            <div>
-                <h2>Episode Detail</h2>
-                <p>{selectedEpisode?.title}</p>
-                <p>{selectedEpisode?.pubDate}</p>
-                <p>{selectedEpisode?.duration}</p>
-                <p>{selectedEpisode?.description}</p>
-                <p>{selectedEpisode?.audioUrl}</p>
-                <audio src={selectedEpisode?.audioUrl} controls />
-            </div>
+        <div className={styles.container}>
+            <PodcastCard image={image} title={title} author={author} summary={summary} />
+            <Episode episode={selectedEpisode} />
         </div>
     )
 }

@@ -1,0 +1,14 @@
+.header {
+    color: var(--font-blue);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.title {
+    margin: 10px 0;
+}
