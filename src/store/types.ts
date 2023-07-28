@@ -25,4 +25,5 @@ export interface PodcastDetail extends Podcast {
 
 export interface PodcastDetailState {
     podcastDetail: PodcastDetail | null;
+    selectedEpisode: Episode | null;
 }
