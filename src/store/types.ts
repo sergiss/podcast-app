@@ -1,5 +1,9 @@
 export interface Podcast {
     id: string;
+    title: string;
+    author: string;
+    summary: string;
+    image: string;
 }
 
 export interface PodcastListState {
@@ -8,6 +12,11 @@ export interface PodcastListState {
 
 export interface Episode {
     id: string;
+    title: string;
+    pubDate: string;
+    duration: string;
+    description: string;
+    audioUrl: string;
 }
 
 export interface PodcastDetail extends Podcast {
