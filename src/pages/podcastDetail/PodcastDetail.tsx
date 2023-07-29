@@ -30,8 +30,12 @@ const PodcastDetail = () => {
 
   return (
     <div className={styles.container}>
-      <PodcastCard image={image} title={title} author={author} summary={summary} />
-      <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
+      <div className={styles.card}>
+        <PodcastCard id={podcastId} image={image} title={title} author={author} summary={summary} />
+      </div>
+      <div>
+        <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
+      </div>
     </div>
   );
 };

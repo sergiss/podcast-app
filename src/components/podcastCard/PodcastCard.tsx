@@ -1,23 +1,41 @@
-import React from 'react'
-import styles from './PodcastCard.module.css';
+import React from "react";
+import { Link } from "react-router-dom";
+import styles from "./PodcastCard.module.css";
+import ShowMore from "../showMore";
+import Separator from "../separator";
 
 interface PodcastCardProps {
-    image: string;
-    title: string;
-    author: string;
-    summary: string;
+  id: string;
+  image: string;
+  title: string;
+  author: string;
+  summary: string;
 }
 
-const PodcastCard = ({ image, title, author, summary}: PodcastCardProps) => {
+const PodcastCard = ({
+  id,
+  image,
+  title,
+  author,
+  summary,
+}: PodcastCardProps) => {
   return (
-    <div className={styles.container}>
+    <div className={`border ${styles.container}`}>
+      <Link className={styles.link} to={`/podcast/${id}`}>
         <img className={styles.image} src={image} alt={title} />
-        <h2>{title}</h2>
-        <h3>by {author}</h3>
-        <h4>Description:</h4>
-        <p>{summary}</p>
+      </Link>
+      <Separator />
+      <Link className={styles.link} to={`/podcast/${id}`}>
+        <h2 className={styles.title}>{title}</h2>
+        <p className={styles.author}>by {author}</p>
+      </Link>
+      <Separator />
+      <p className={styles.description}>Description:</p>
+      <ShowMore maxHeight={"250px"}>
+        <p className={styles.descriptionText}>{summary}</p>
+      </ShowMore>
     </div>
-  )
-}
+  );
+};
 
-export default PodcastCard
+export default PodcastCard;

@@ -1,12 +1,12 @@
-import React from 'react'
-import { Episode } from '../../store/types';
+import React from "react";
+import { Episode } from "../../store/types";
 
-import styles from './EpisodeList.module.css';
-import { useNavigate } from 'react-router-dom';
+import styles from "./EpisodeList.module.css";
+import { useNavigate } from "react-router-dom";
 
 interface EpisodeListProps {
-    podcastId: string;
-    episodes: Episode[];
+  podcastId: string;
+  episodes: Episode[];
 }
 
 const EpisodeList = ({ podcastId, episodes }: EpisodeListProps) => {
@@ -14,32 +14,44 @@ const EpisodeList = ({ podcastId, episodes }: EpisodeListProps) => {
   const episodeCount = episodes?.length || 0;
 
   const handleClick = (episode: Episode) => {
-    navigate(`/podcast/${encodeURIComponent(podcastId)}/episode/${encodeURIComponent(episode.id)}`);
-  }
+    navigate(
+      `/podcast/${encodeURIComponent(podcastId)}/episode/${encodeURIComponent(
+        episode.id
+      )}`
+    );
+  };
 
   return (
     <div className={styles.container}>
-      <h2>Episodes: {episodeCount}</h2>
-      <table className={styles.episodes}>
-        <thead>
-          <tr>
-            <th>Title</th>
-            <th>Date</th>
-            <th>Duration</th>
-          </tr>
-        </thead>
-        <tbody>
-          {episodes.map((episode: any) => (
-            <tr className={styles.episode} key={episode.id} onClick={(e) => handleClick(episode)}>
-              <td>{episode.title}</td>
-              <td>{episode.pubDate}</td>
-              <td>{episode.duration}</td>
+      <div className="border">
+        <h2 className={styles.episodeCount}>Episodes: {episodeCount}</h2>
+      </div>
+      <div className="border">
+        <table className={styles.episodes}>
+          <thead>
+            <tr>
+              <th scope="col">Title</th>
+              <th scope="col">Date</th>
+              <th scope="col">Duration</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {episodes.map((episode: any) => (
+              <tr
+                className={styles.episode}
+                key={episode.id}
+                onClick={(e) => handleClick(episode)}
+              >
+                <td className={styles.blueText}>{episode.title}</td>
+                <td>{episode.pubDate}</td>
+                <td>{episode.duration}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
-  )
-}
+  );
+};
 
-export default EpisodeList
+export default EpisodeList;

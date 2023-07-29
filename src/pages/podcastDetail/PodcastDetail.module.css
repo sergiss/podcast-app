@@ -1,5 +1,20 @@
 .container {
     display: flex;
     flex-direction: row;
-    gap: 10px;
+    gap: 50px;
+}
+
+.card {
+    max-width: 350px;
+}
+
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .card {
+        max-width: 100%;
+    }
 }

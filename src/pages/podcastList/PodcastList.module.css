@@ -13,20 +13,22 @@
 }
 
 .filter span {
+    flex: 0;
     background-color: var(--font-blue);
     color: white;
     font-weight: bold;
-    font-size: 1.5rem;
-    line-height: 1.5rem;
-    padding: 0px 5px 2px 4px;
+    font-size: 1.3rem;
+    line-height: 1.3rem;
+    padding: 2px 5px;
     border-radius: 10px;
 }
 
 .filter input {
-    border: 1px solid var(--font-blue);
+    min-width: 30%;
+    border: 2px solid var(--border-gray);
     border-radius: 5px;
     padding: 10px;
-    font-size: 1.1rem;
+    font-size: 0.9rem;
     font-weight: bold;
 }
 
@@ -59,21 +61,22 @@
     height: 75%;
     z-index: -1;
     border-radius: 2px;
-    box-shadow: 3px 3px 3px 0px #8080804d,
-               -3px 3px 3px 0px #8080804d;
+    box-shadow: 3px 3px 3px 0px var(--border-gray),
+               -3px 3px 3px 0px var(--border-gray);
 
 }
 
 .podcast:hover {
-    background-image: linear-gradient(to bottom, #ffffff, #aeaeae4d);
+    background-image: linear-gradient(to bottom, #ffffff, #f2f1f1);
 }
 
-.podcast h2 {
+.podcast h3 {
     margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    text-transform: uppercase;
     line-height: 1.2em;
     max-height: 2.4em;
     color: black
@@ -83,6 +86,7 @@
     flex: 1;
     color: #5b5b5b;
     font-weight: bold;
+    margin: 10px 0;
 }
 
 .podcast img {

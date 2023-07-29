@@ -1,12 +1,43 @@
 .container {
-    padding: 10px;
-    max-width: 350px;
+    padding: 20px;
     display: flex;
     flex-direction: column;
+}
+
+.title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.author {
+    font-size: 0.8rem;
+    font-style: italic;
+    margin: 0;
+}
+
+.description {
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+.descriptionText {
+    font-style: italic;
+}
+
+.link {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    text-decoration: none;
+    color: black;
 }
 
 .image {
     width: 200px;
     height: 200px;
     border-radius: 10px;
+    align-self: center;
 }

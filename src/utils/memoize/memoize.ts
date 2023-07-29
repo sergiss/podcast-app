@@ -74,11 +74,10 @@ const memoize = async <T>({ key, update, updateTime }: MemoizeProps<T>): Promise
     const now = Date.now();
     const diff = now - lastUpdate;
     if (diff > updateTime || !value) {
+        // console.log(`Updating data for ${key}`);
         value = await update();
         await setInDatabase<T>(db, key, value);
         await setInDatabase<number>(db, `${key}-lastUpdate`, now);
-    } else {
-        // console.log(`Using cached data for ${key}`);
     }
 
     return value;

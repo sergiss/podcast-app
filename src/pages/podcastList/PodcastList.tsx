@@ -18,7 +18,6 @@ const PodcastList = () => {
 
   return (
     <div className={styles.container}>
-
       <div className={styles.filter}>
         <span>{filteredPodcasts.length}</span>
         <input
@@ -30,14 +29,17 @@ const PodcastList = () => {
       </div>
       <div className={styles.list}>
         {filteredPodcasts.map((podcast: any) => (
-          <Link className={styles.podcast} to={`/podcast/${encodeURIComponent(podcast.id)}`} key={podcast.id}>
+          <Link
+            className={styles.podcast}
+            to={`/podcast/${encodeURIComponent(podcast.id)}`}
+            key={podcast.id}
+          >
             <img src={podcast.image} alt={podcast.title} />
-            <h2>{podcast.title}</h2>
+            <h3>{podcast.title}</h3>
             <p>{podcast.author}</p>
           </Link>
         ))}
       </div>
-
     </div>
   );
 };

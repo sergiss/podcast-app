@@ -1,5 +1,6 @@
 :root {
   --font-blue: #3975ad;
+  --border-gray: #ddd;
 }
 
 body {
@@ -9,4 +10,17 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.border {
+  border-radius: 5px;
+  border: 1px solid var(--border-gray);
+  box-shadow: 2px 2px 8px var(--border-gray);
+}
+
+.separator {
+  border: none;
+  height: 1px;
+  background: var(--border-gray);;
+  margin: 20px 0;
 }

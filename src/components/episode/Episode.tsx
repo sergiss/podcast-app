@@ -1,20 +1,28 @@
-import React from 'react'
-import * as Types from '../../store/types'
+import React from "react";
+import * as Types from "../../store/types";
+import Separator from "../separator";
 
-import styles from './Episode.module.css'
+import styles from "./Episode.module.css";
+import ShowMore from '../showMore/ShowMore';
 
 interface EpisodeProps {
-    episode: Types.Episode;
+  episode: Types.Episode;
 }
 
 const Episode = ({ episode }: EpisodeProps) => {
-    return (
-        <div>
-            <h2>{episode?.title}</h2>
-            <div dangerouslySetInnerHTML={{ __html: episode?.description || "" }}></div>
-            <audio src={episode?.audioUrl} controls />
-        </div>
-    )
-}
+  return (
+    <div className={`border ${styles.container}`}>
+      <h2 className={styles.title}>{episode?.title}</h2>
+      <ShowMore maxHeight={"400px"} className={styles.showMore}>
+        <div
+          className={styles.description}
+          dangerouslySetInnerHTML={{ __html: episode?.description || "" }}
+        ></div>
+      </ShowMore>
+      <Separator />
+      <audio className={styles.audio} src={episode?.audioUrl} controls />
+    </div>
+  );
+};
 
-export default Episode
+export default Episode;
