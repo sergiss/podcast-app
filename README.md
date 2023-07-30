@@ -1,46 +1,68 @@
-# Getting Started with Create React App
+# Podcaster App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Esta es una aplicación simple que permite a los usuarios escuchar podcasts musicales iTunes. 
 
-## Available Scripts
+Está compuesta de tres vistas principales:
 
-In the project directory, you can run:
+- Vista Principal: Muestra una lista de podcasts musicales.
+- Detalles de un Podcast: Muestra los detalles de un podcast seleccionado.
+- Detalles de un Capítulo de un Podcast: Muestra los detalles y el reproductor de audio de un capítulo de un podcast seleccionado.
 
-### `npm start`
+## Tecnologías utilizadas
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- [React](https://reactjs.org/): Librería de JavaScript para crear interfaces de usuario.
+- [TypeScript](https://www.typescriptlang.org/): Lenguaje de programación que añade tipado estático a JavaScript.
+- [React Router](https://reactrouter.com/): Librería de React para la gestión de rutas.
+- [Redux Toolkit](https://redux-toolkit.js.org/): Librería oficial de Redux que proporciona un conjunto de herramientas que simplifican la gestión del estado de la aplicación con Redux en un proyecto de React.
+- [Jest](https://jestjs.io/): Framework de JavaScript para la creación de tests.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Uso del servicio CORS Anywhere (**IMPORTANTE**)
 
-### `npm test`
+Para acceder a recursos externos que no proporcionan JSONP ni cabeceras CORS, se ha utilizado el servicio [CORS Anywhere](https://cors-anywhere.herokuapp.com/). Para habilitar este servicio, primero se debe de **visitar la página web ([CORS Anywhere](https://cors-anywhere.herokuapp.com/)) y activar el servicio**.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+***Sin este paso, la aplicación no funcionará correctamente.***
 
-### `npm run build`
+## Instalación las dependencias del proyecto
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Ejecución en modo Desarrollo
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Para iniciar la aplicación en modo desarrollo, se debe de utilizar el comando: 
 
-### `npm run eject`
+```
+npm run start
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Este comando inicia la aplicación en modo desarrollo. Se debe abrir [http://localhost:3000](http://localhost:3000) para verla en el navegador.
+El navegador se recargará automáticamente si se realizan cambios en el código fuente.
+También se mostrarán errores de linting en la consola.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Compilación del proyecto para producción
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+Para compilar el proyecto para producción, se debe de utilizar el comando: 
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+npm run build
+```
 
-## Learn More
+Este comando compila y optimiza la aplicación para obtener el máximo rendimiento en la carpeta `build`. 
+Al ejecutarlo, React se agrupa en el modo de producción, lo que resulta en una versión más eficiente y rápida de la aplicación. 
+Además, el código se minimiza para mejorar la velocidad de carga y los nombres de archivo se generan con hashes únicos para mejor gestión del cache.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Ejecución de los tests
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Para ejecutar los tests, se debe de utilizar el comando: 
+
+```
+npm run test
+```
+
+Este comando lanza los diferentes tests de la aplicación.
+En concreto se han creado tests para las tres páginas principales de la aplicación:
+
+- /src/pages/podcastList/PodcastList.test.tsx
+- /src/pages/podcastDetail/PodcastDetail.test.tsx
+- /src/pages/episodeDetail/EpisodeDetail.test.tsx
