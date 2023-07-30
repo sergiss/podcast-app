@@ -13,10 +13,14 @@
     color: var(--font-blue);
 }
 
+.wrapper {
+    padding: 10px;
+}
+
 .episodes {
     border-collapse: collapse;
-    margin: 10px;
     font-size: 0.9rem;
+    width: 100%;
 }
 
 .episodes th,

@@ -26,7 +26,7 @@ const EpisodeList = ({ podcastId, episodes }: EpisodeListProps) => {
       <div className="border">
         <h2 className={styles.episodeCount}>Episodes: {episodeCount}</h2>
       </div>
-      <div className="border">
+      <div className={`border ${styles.wrapper}`}>
         <table className={styles.episodes}>
           <thead>
             <tr>

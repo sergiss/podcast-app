@@ -12,13 +12,16 @@ import { AnyAction } from "@reduxjs/toolkit";
 const PodcastDetail = () => {
   const navigate = useNavigate();
   const { podcastId } = useParams();
-  const { podcastDetail } = useSelector((state: RootState) => state.podcastDetail);
+  const { podcastDetail } = useSelector(
+    (state: RootState) => state.podcastDetail
+  );
   const { loading } = useSelector((state: any) => state.global);
 
   useEffect(() => {
     if (!podcastId) return;
     dispatch(fetchPodcastDetail(podcastId)).then((res: AnyAction) => {
-      if (res.error) { // Error de CORS 
+      if (res.error) {
+        // Error de CORS
         navigate("/");
       }
     });
@@ -26,16 +29,12 @@ const PodcastDetail = () => {
 
   if (!podcastDetail || !podcastId || loading) return null;
 
-  const { image, title, author, summary } = podcastDetail;
-
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <PodcastCard id={podcastId} image={image} title={title} author={author} summary={summary} />
+        <PodcastCard {...podcastDetail} />
       </div>
-      <div>
-        <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
-      </div>
+      <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
     </div>
   );
 };

@@ -23,17 +23,11 @@ const EpisodeDetail = () => {
 
   if (!podcastDetail || !selectedEpisode || !podcastId || loading) return null;
 
-  const { image, title, author, summary } = podcastDetail;
-
   return (
     <div className={styles.container}>
       <div className={styles.card}>
         <PodcastCard
-          id={podcastId}
-          image={image}
-          title={title}
-          author={author}
-          summary={summary}
+          {...podcastDetail}
         />
       </div>
       <div>
