@@ -5,7 +5,11 @@
 }
 
 .card {
-    max-width: 350px;
+    max-width: 325px;
+}
+
+.podcast {
+    flex: 1;
 }
 
 @media (max-width: 600px) {

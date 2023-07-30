@@ -5,11 +5,7 @@ import Separator from "../separator";
 import styles from "./Episode.module.css";
 import ShowMore from '../showMore/ShowMore';
 
-interface EpisodeProps {
-  episode: Types.Episode;
-}
-
-const Episode = ({ episode }: EpisodeProps) => {
+const Episode = (episode: Types.Episode) => {
   return (
     <div className={`border ${styles.container}`}>
       <h2 className={styles.title}>{episode?.title}</h2>

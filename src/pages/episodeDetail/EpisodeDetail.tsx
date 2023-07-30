@@ -29,8 +29,8 @@ const EpisodeDetail = () => {
       <div className={styles.card}>
         <PodcastCard {...podcastDetail} />
       </div>
-      <div>
-        <Episode episode={selectedEpisode} />
+      <div className={styles.episode}>
+        <Episode {...selectedEpisode} />
       </div>
     </div>
   );

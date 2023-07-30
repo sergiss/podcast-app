@@ -9,7 +9,6 @@ import { AnyAction } from "@reduxjs/toolkit";
 
 import styles from "./PodcastDetail.module.css";
 
-
 const PodcastDetail = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
@@ -22,11 +21,12 @@ const PodcastDetail = () => {
   useEffect(() => {
     if (!podcastId) return;
     dispatch(fetchPodcastDetail(podcastId)).then((res: AnyAction) => {
-      if (res.error) { // Error de CORS (cors-anywhere.herokuapp)
-        navigate("/"); 
+      if (res.error) {
+        // Error de CORS (cors-anywhere.herokuapp)
+        navigate("/");
       }
     });
-  }, [podcastId]);
+  }, [dispatch, navigate, podcastId]);
 
   if (!podcastDetail || !podcastId || loading) return null;
 
@@ -35,7 +35,9 @@ const PodcastDetail = () => {
       <div className={styles.card}>
         <PodcastCard {...podcastDetail} />
       </div>
-      <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
+      <div className={styles.podcast}>
+        <EpisodeList podcastId={podcastId} episodes={podcastDetail.episodes} />
+      </div>
     </div>
   );
 };

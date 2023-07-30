@@ -1,16 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import styles from "./PodcastCard.module.css";
 import ShowMore from "../showMore";
 import Separator from "../separator";
+import { Podcast } from "../../store/types";
 
-interface PodcastCardProps {
-  id: string;
-  image: string;
-  title: string;
-  author: string;
-  summary: string;
-}
+import styles from "./PodcastCard.module.css";
 
 const PodcastCard = ({
   id,
@@ -18,7 +12,7 @@ const PodcastCard = ({
   title,
   author,
   summary,
-}: PodcastCardProps) => {
+}: Podcast) => {
   return (
     <div className={`border ${styles.container}`}>
       <Link className={styles.link} to={`/podcast/${id}`}>
