@@ -18,6 +18,7 @@ const PodcastList = () => {
 
   return (
     <div className={styles.container}>
+      { /* Podcast Filter */}
       <div className={styles.filter}>
         <span>{filteredPodcasts.length}</span>
         <input
@@ -27,6 +28,7 @@ const PodcastList = () => {
           placeholder="Filter podcasts..."
         />
       </div>
+      { /* Podcast List */}
       <div className={styles.list}>
         {filteredPodcasts.map((podcast: any) => (
           <Link

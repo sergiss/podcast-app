@@ -23,3 +23,5 @@ export const formatDuration = (duration: string): string => {
 export const getTextContentByTagName = (element: Node, selector: string) => {
     return (element as Element).getElementsByTagName(selector)?.[0]?.textContent || '';
 };
+
+export const simulateSlowNetwork = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));

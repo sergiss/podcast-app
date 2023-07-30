@@ -1,39 +1,44 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { getEpisodeList, getPodcastDetails } from "../../utils/api";
-import { Episode, Podcast, PodcastDetail } from "../types";
+import { Episode, PodcastDetail } from "../types";
 import { RootState } from "../store";
-import fetchTopPodcasts from "./fetchTopPodcasts";
-import memoize from "../../utils/memoize";
 import fetchPodcastDetail from "./fetchPodcastDetail";
 import { setLoading } from "../slices/globalSlice";
 
-const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
-
 /**
- * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
+ * Action to fetch an episode's details given the podcastId and episodeId.
+ * It fetches the podcast's details if not present, and returns the specific
+ * episode details.
  */
-const fetchEpisodeDetail = createAsyncThunk<{ episode: Episode }, { podcastId: string; episodeId: string }, {}>(
-    "podcastDetail/fetchEpisodeDetail",
-    async ({ podcastId, episodeId }, { rejectWithValue, getState, dispatch }) => {
-        try {
-            dispatch(setLoading(true));
-            let { podcastDetail } = (getState() as RootState).podcastDetail;
-            if (!podcastDetail || podcastDetail.id !== podcastId) { 
-                const { payload } = await dispatch(fetchPodcastDetail(podcastId)) as { payload: { podcastDetail: PodcastDetail } };
-                podcastDetail = payload.podcastDetail;
-            }
+const fetchEpisodeDetail = createAsyncThunk<
+  { episode: Episode },
+  { podcastId: string; episodeId: string },
+  {}
+>(
+  "podcastDetail/fetchEpisodeDetail",
+  async ({ podcastId, episodeId }, { rejectWithValue, getState, dispatch }) => {
+    try {
+      dispatch(setLoading(true));
+      let { podcastDetail } = (getState() as RootState).podcastDetail;
+      if (!podcastDetail || podcastDetail.id !== podcastId) {
+        const { payload } = (await dispatch(fetchPodcastDetail(podcastId))) as {
+          payload: { podcastDetail: PodcastDetail };
+        };
+        podcastDetail = payload.podcastDetail;
+      }
 
-            const episodes = podcastDetail.episodes;
-            const episode = episodes.find((episode) => episode.id === episodeId) as Episode;
+      const episodes = podcastDetail.episodes;
+      const episode = episodes.find(
+        (episode) => episode.id === episodeId
+      ) as Episode;
 
-            return { episode };
-        } catch (error) {
-            console.error('Error fetching data:', error);
-            return rejectWithValue(error);
-        } finally {
-            dispatch(setLoading(false));
-        }
+      return { episode };
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      return rejectWithValue(error);
+    } finally {
+      dispatch(setLoading(false));
     }
+  }
 );
 
 export default fetchEpisodeDetail;

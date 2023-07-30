@@ -26,9 +26,7 @@ const EpisodeDetail = () => {
   return (
     <div className={styles.container}>
       <div className={styles.card}>
-        <PodcastCard
-          {...podcastDetail}
-        />
+        <PodcastCard {...podcastDetail} />
       </div>
       <div>
         <Episode episode={selectedEpisode} />

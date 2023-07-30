@@ -24,8 +24,6 @@ const processTopPodcastData = (data: any) => {
   });
 };
 
-const simulateSlowNetwork = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms));
-
 /**
  * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
  */
@@ -35,7 +33,7 @@ const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, {}>(
     try {
       dispatch(setLoading(true));
 
-      await simulateSlowNetwork(5000); // simulate slow network
+      // await simulateSlowNetwork(5000); // simulate slow network
 
       const podcasts = await memoize<Podcast[]>({
         key: `topPodcasts`,
