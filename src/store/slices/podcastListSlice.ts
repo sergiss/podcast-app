@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { PodcastListState } from "../types";
-import fetchTopPodcasts from "../thunks/fetchTopPodcasts";
+import { fetchTopPodcasts } from "../thunks";
 
 const initialState: PodcastListState = {
   podcasts: []
@@ -11,7 +11,7 @@ const podcastListSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchTopPodcasts.fulfilled, (state, { payload }) => {
+    builder.addCase(fetchTopPodcasts.fulfilled, (state, { payload }: any) => {
       state.podcasts = payload.podcasts;
     });
   },

@@ -19,6 +19,11 @@ interface TopPodcastParams {
   genre?: string;
 }
 
+/**
+ * Returns a list of top podcasts from iTunes
+ * @param param0 limit: number, genre: string
+ * @returns top podcasts
+ */
 export const getTopPodcasts = async ({
   limit = 100,
   genre = '1310', // Default Music
@@ -27,11 +32,21 @@ export const getTopPodcasts = async ({
   return response.data;
 };
 
+/**
+ * Returns information about a podcast (feedUrl is the interesting field) 
+ * @param podcastId id of the podcast 
+ * @returns podcast details
+ */
 export const getPodcastDetails = async (podcastId: string) => {
   const response = await instance.get(`${BASE_URL}/lookup?id=${podcastId}`);
   return response.data;
 };
 
+/**
+ * Returns a list of episodes from a podcast (process the XML response) 
+ * @param feedUrl url of the podcast feed
+ * @returns list of episodes
+ */
 export const getEpisodeList = async (feedUrl: string) => {
   const response: any = await instance.get(feedUrl);
   const xmlDocument = new DOMParser().parseFromString(response.data, "text/xml");

@@ -1,14 +1,15 @@
 import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
-import { RootState, dispatch } from "../../store";
-import { fetchEpisodeDetail } from "../../store/thunks";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../store";
+import { fetchEpisodeDetail } from "../../store/thunks/";
 import PodcastCard from "../../components/podcastCard";
 import Episode from "../../components/episode";
 
 import styles from "./EpisodeDetail.module.css";
 
 const EpisodeDetail = () => {
+  const dispatch: AppDispatch = useDispatch();
   const { podcastId, episodeId } = useParams();
   const { selectedEpisode, podcastDetail } = useSelector(
     (state: RootState) => state.podcastDetail
@@ -19,7 +20,7 @@ const EpisodeDetail = () => {
   useEffect(() => {
     if (!podcastId || !episodeId) return;
     dispatch(fetchEpisodeDetail({ podcastId, episodeId }));
-  }, [podcastId, episodeId]);
+  }, [dispatch, podcastId, episodeId]);
 
   if (!podcastDetail || !selectedEpisode || !podcastId || loading) return null;
 

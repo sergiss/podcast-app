@@ -1,20 +1,21 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState, dispatch } from "../../store";
+import { useSelector, useDispatch } from "react-redux";
+import { RootState, AppDispatch } from "../../store";
 import { fetchTopPodcasts } from "../../store/thunks";
 import usePodcastFilter from "../../hooks/usePodcastFilter";
 
 import styles from "./PodcastList.module.css";
 
 const PodcastList = () => {
+  const dispatch: AppDispatch = useDispatch();
   const { podcasts } = useSelector((state: RootState) => state.podcastList);
   const { filteredPodcasts, searchFilter, setSearchFilter } =
     usePodcastFilter(podcasts);
 
   useEffect(() => {
     dispatch(fetchTopPodcasts());
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.container}>

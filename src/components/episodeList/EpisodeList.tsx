@@ -1,8 +1,8 @@
 import React from "react";
 import { Episode } from "../../store/types";
+import { useNavigate } from "react-router-dom";
 
 import styles from "./EpisodeList.module.css";
-import { useNavigate } from "react-router-dom";
 
 interface EpisodeListProps {
   podcastId: string;
