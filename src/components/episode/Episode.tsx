@@ -20,7 +20,7 @@ const Episode = ({ episode }: EpisodeProps) => {
         ></div>
       </ShowMore>
       <Separator />
-      <audio className={styles.audio} src={episode?.audioUrl} controls />
+      <audio className={styles.audio} src={episode?.audioUrl} controls autoPlay />
     </div>
   );
 };

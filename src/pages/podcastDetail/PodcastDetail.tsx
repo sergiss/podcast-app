@@ -5,9 +5,9 @@ import { RootState, dispatch } from "../../store";
 import { fetchPodcastDetail } from "../../store/thunks";
 import PodcastCard from "../../components/podcastCard";
 import EpisodeList from "../../components/episodeList";
+import { AnyAction } from "@reduxjs/toolkit";
 
 import styles from "./PodcastDetail.module.css";
-import { AnyAction } from "@reduxjs/toolkit";
 
 const PodcastDetail = () => {
   const navigate = useNavigate();
