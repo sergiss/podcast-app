@@ -22,6 +22,14 @@ Para acceder a recursos externos que no proporcionan JSONP ni cabeceras CORS, se
 
 ***Sin este paso, la aplicación no funcionará correctamente.***
 
+## Clonación del repositorio
+
+Para clonar el repositorio del proyecto localmente, se debe utiliza el siguiente comando:
+
+```
+git clone https://github.com/sergiss/podcast-app.git
+```
+
 ## Instalación las dependencias del proyecto
 
 ```
