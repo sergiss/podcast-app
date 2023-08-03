@@ -40,7 +40,7 @@ const ShowMore = ({ maxHeight, children, ...rest }: ShowMoreProps) => {
           <button
             className={styles.button}
             type="button"
-            onClick={(e) => setShowMore((value) => !value)}
+            onClick={() => setShowMore((value) => !value)}
           >
             {!showMore ? "Show More" : "Show Less"}
           </button>

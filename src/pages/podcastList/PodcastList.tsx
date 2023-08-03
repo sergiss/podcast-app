@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
 import { fetchTopPodcasts } from "../../store/thunks";
 import usePodcastFilter from "../../hooks/usePodcastFilter";
+import { Podcast } from "../../store/types";
 
 import styles from "./PodcastList.module.css";
 
@@ -31,7 +32,7 @@ const PodcastList = () => {
       </div>
       {/* Podcast List */}
       <div className={styles.list}>
-        {filteredPodcasts.map((podcast: any) => (
+        {filteredPodcasts.map((podcast: Podcast) => (
           <Link
             className={styles.podcast}
             to={`/podcast/${encodeURIComponent(podcast.id)}`}

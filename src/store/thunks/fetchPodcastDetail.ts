@@ -15,7 +15,7 @@ const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
 const fetchPodcastDetail = createAsyncThunk<
   { podcastDetail: PodcastDetail },
   string,
-  {}
+  object
 >(
   "podcastDetail/fetchPodcastDetail",
   async (id, { rejectWithValue, getState, dispatch }) => {
@@ -37,7 +37,7 @@ const fetchPodcastDetail = createAsyncThunk<
           const podcast = podcasts.find(
             (podcast) => podcast.id === id
           ) as Podcast;
-          const apiData: any = await getPodcastDetails(id);
+          const apiData = await getPodcastDetails(id);
           const episodes = await getEpisodeList(apiData?.results?.[0]?.feedUrl);
 
           return {

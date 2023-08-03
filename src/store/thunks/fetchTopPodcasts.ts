@@ -6,14 +6,42 @@ import { setLoading } from "../slices/globalSlice";
 
 const UPDATE_TIME = 1000 * 60 * 60 * 24; // 24 hours
 
+interface Image {
+  label: string;
+}
+
+interface Entry {
+  id: {
+    attributes: {
+      "im:id": string;
+    };
+  };
+  "im:name": {
+    label: string;
+  };
+  "im:artist": {
+    label: string;
+  };
+  summary: {
+    label: string;
+  };
+  "im:image": Image[];
+}
+
+interface TopPodcastData {
+  feed: {
+    entry: Entry[];
+  };
+}
+
 /**
  * Obtains the data from the API and processes it to return
  * the data that we need (image, title, author, id)
  * @param data raw data from the API
  * @returns processed data
  */
-const processTopPodcastData = (data: any) => {
-  return data?.feed?.entry?.map((item: any) => {
+const processTopPodcastData = (data: TopPodcastData) => {
+  return data?.feed?.entry?.map((item: Entry) => {
     const id = item.id.attributes["im:id"];
     const title = item["im:name"].label;
     const author = item["im:artist"].label;
@@ -27,7 +55,7 @@ const processTopPodcastData = (data: any) => {
 /**
  * Thunks to fetches the top podcasts from the API and stores them in IndexedDB
  */
-const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, {}>(
+const fetchTopPodcasts = createAsyncThunk<{ podcasts: Podcast[] }, void, object>(
   "podcast/fetchTopPodcasts",
   async (_arg, { dispatch, rejectWithValue }) => {
     try {

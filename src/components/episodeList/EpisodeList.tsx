@@ -36,11 +36,11 @@ const EpisodeList = ({ podcastId, episodes }: EpisodeListProps) => {
             </tr>
           </thead>
           <tbody>
-            {episodes.map((episode: any) => (
+            {episodes.map((episode: Episode) => (
               <tr
                 className={styles.episode}
                 key={episode.id}
-                onClick={(e) => handleClick(episode)}
+                onClick={() => handleClick(episode)}
               >
                 <td className={styles.blueText}>{episode.title}</td>
                 <td>{episode.pubDate}</td>

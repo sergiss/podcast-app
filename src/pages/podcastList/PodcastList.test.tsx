@@ -1,3 +1,4 @@
+import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import PodcastList from "./PodcastList";
@@ -28,7 +29,7 @@ const mockState = {
 
 jest.mock("react-redux", () => ({
   useDispatch: () => jest.fn().mockResolvedValueOnce({}),
-  useSelector: (callback: any) => callback(mockState),
+  useSelector: (callback: (state: object) => void) => callback(mockState),
 }));
 
 jest.mock("../../store/thunks", () => ({

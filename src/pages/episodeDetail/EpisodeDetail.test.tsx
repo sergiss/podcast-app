@@ -1,7 +1,9 @@
-import { render, screen, fireEvent } from "@testing-library/react";
+import React from "react";
+import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import EpisodeDetail from "./EpisodeDetail";
 import { Episode, GlobalState, PodcastDetailState } from "../../store/types";
+import { RootState } from "../../store";
 
 const mockState: {
   global: GlobalState;
@@ -50,7 +52,7 @@ jest.mock("react-router-dom", () => ({
 
 jest.mock("react-redux", () => ({
   useDispatch: () => jest.fn().mockResolvedValueOnce({}),
-  useSelector: (callback: any) => callback(mockState),
+  useSelector: (callback: (state: object) => void) => callback(mockState),
 }));
 
 jest.mock("../../store/thunks", () => ({

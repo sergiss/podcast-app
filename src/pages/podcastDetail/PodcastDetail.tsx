@@ -16,7 +16,7 @@ const PodcastDetail = () => {
   const { podcastDetail } = useSelector(
     (state: RootState) => state.podcastDetail
   );
-  const { loading } = useSelector((state: any) => state.global);
+  const { loading } = useSelector((state: RootState) => state.global);
 
   useEffect(() => {
     if (!podcastId) return;

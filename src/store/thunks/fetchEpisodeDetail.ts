@@ -12,7 +12,7 @@ import { setLoading } from "../slices/globalSlice";
 const fetchEpisodeDetail = createAsyncThunk<
   { episode: Episode },
   { podcastId: string; episodeId: string },
-  {}
+  object
 >(
   "podcastDetail/fetchEpisodeDetail",
   async ({ podcastId, episodeId }, { rejectWithValue, getState, dispatch }) => {
