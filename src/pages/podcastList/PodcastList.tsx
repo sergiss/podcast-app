@@ -38,7 +38,9 @@ const PodcastList = () => {
             to={`/podcast/${encodeURIComponent(podcast.id)}`}
             key={podcast.id}
           >
-            <img src={podcast.image} alt={podcast.title} />
+            <div className={styles.wrapper}>
+              <img src={podcast.image} alt={podcast.title} />
+            </div>
             <h3>{podcast.title}</h3>
             <p>{podcast.author}</p>
           </Link>

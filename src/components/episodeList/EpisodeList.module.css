@@ -10,9 +10,11 @@
 
 .blueText {
     color: var(--font-blue);
+    word-break: break-word;
 }
 
 .wrapper {
+    overflow-x: auto;
     padding: 10px;
 }
 

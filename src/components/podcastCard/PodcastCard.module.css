@@ -36,8 +36,9 @@
 }
 
 .image {
-    width: 200px;
-    height: 200px;
+    max-width: 200px;
+    width: 100%;
+    height: auto;
     border-radius: 10px;
     align-self: center;
 }

@@ -3,7 +3,6 @@ import { render, screen } from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import EpisodeDetail from "./EpisodeDetail";
 import { Episode, GlobalState, PodcastDetailState } from "../../store/types";
-import { RootState } from "../../store";
 
 const mockState: {
   global: GlobalState;

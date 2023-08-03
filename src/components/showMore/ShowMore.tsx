@@ -19,10 +19,8 @@ const ShowMore = ({ maxHeight, children, ...rest }: ShowMoreProps) => {
   useEffect(() => {
     const htmlDivElement = divElement.current;
     if (htmlDivElement) {
-      setOverflow(
-        htmlDivElement.clientHeight >
-          (htmlDivElement.parentElement as HTMLDivElement)?.clientHeight
-      );
+      const parentElement = htmlDivElement.parentElement as HTMLDivElement;
+      setOverflow(parentElement.clientHeight < parentElement.scrollHeight);
     } else {
       setOverflow(false);
     }
@@ -36,7 +34,7 @@ const ShowMore = ({ maxHeight, children, ...rest }: ShowMoreProps) => {
         </div>
       </div>
       {(showMore || overflow) && (
-        <div className={styles['button-wrapper']}>
+        <div className={styles["button-wrapper"]}>
           <button
             className={styles.button}
             type="button"

@@ -89,8 +89,15 @@
     margin: 10px 0;
 }
 
-.podcast img {
+.wrapper {
     width: 50%;
+    padding: 5px;
+    box-sizing: border-box;
+    overflow: hidden;
+}
+
+.wrapper img {
     border-radius: 50%;
-    padding: 10px;
+    width: 100%;
+    height: auto;
 }
