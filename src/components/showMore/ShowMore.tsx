@@ -24,7 +24,7 @@ const ShowMore = ({ maxHeight, children, ...rest }: ShowMoreProps) => {
     } else {
       setOverflow(false);
     }
-  }, [children, showMore, maxHeight]);
+  }, [children, maxHeight, showMore]);
 
   return (
     <div {...rest}>
