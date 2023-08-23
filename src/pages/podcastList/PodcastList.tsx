@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
 import { fetchTopPodcasts } from "../../store/thunks";
+import { clearPodcastDetail } from "../../store/slices";
 import usePodcastFilter from "../../hooks/usePodcastFilter";
 import { Podcast } from "../../store/types";
 
@@ -14,7 +15,8 @@ const PodcastList = () => {
   const { filteredPodcasts, searchFilter, setSearchFilter } =
     usePodcastFilter(podcasts);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    dispatch(clearPodcastDetail());
     dispatch(fetchTopPodcasts());
   }, [dispatch]);
 
@@ -37,6 +39,7 @@ const PodcastList = () => {
             className={styles.podcast}
             to={`/podcast/${encodeURIComponent(podcast.id)}`}
             key={podcast.id}
+            data-testid="podcast-item"
           >
             <div className={styles.wrapper}>
               <img src={podcast.image} alt={podcast.title} />

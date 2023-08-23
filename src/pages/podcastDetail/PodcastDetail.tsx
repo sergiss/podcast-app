@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useLayoutEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
@@ -13,12 +13,9 @@ const PodcastDetail = () => {
   const dispatch: AppDispatch = useDispatch();
   const navigate = useNavigate();
   const { podcastId } = useParams();
-  const { podcastDetail } = useSelector(
-    (state: RootState) => state.podcastDetail
-  );
-  const { loading } = useSelector((state: RootState) => state.global);
+  const { podcastDetail } = useSelector((state: RootState) => state.podcastDetail);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!podcastId) return;
     dispatch(fetchPodcastDetail(podcastId)).then((res: AnyAction) => {
       if (res.error) {
@@ -28,7 +25,7 @@ const PodcastDetail = () => {
     });
   }, [dispatch, navigate, podcastId]);
 
-  if (!podcastDetail || !podcastId || loading) return null;
+  if (!podcastDetail || !podcastId) return null;
 
   return (
     <div className={styles.container}>

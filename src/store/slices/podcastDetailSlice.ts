@@ -10,7 +10,14 @@ const initialState: PodcastDetailState = {
 const podcastDetailSlice = createSlice({
   name: "podcastDetail",
   initialState,
-  reducers: {},
+  reducers: {
+    clearPodcastDetail: (state) => {
+      state.podcastDetail = null;
+    },
+    clearSelectedEpisode: (state) => {
+      state.selectedEpisode = null;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchPodcastDetail.fulfilled, (state, { payload }) => {
       state.podcastDetail = payload.podcastDetail;
@@ -19,5 +26,7 @@ const podcastDetailSlice = createSlice({
     });
   },
 });
+
+export const { clearPodcastDetail, clearSelectedEpisode } = podcastDetailSlice.actions;
 
 export default podcastDetailSlice.reducer;
