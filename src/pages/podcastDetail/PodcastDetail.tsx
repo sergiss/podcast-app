@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { AppDispatch, RootState } from "../../store";
@@ -15,7 +15,7 @@ const PodcastDetail = () => {
   const { podcastId } = useParams();
   const { podcastDetail } = useSelector((state: RootState) => state.podcastDetail);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!podcastId) return;
     dispatch(fetchPodcastDetail(podcastId)).then((res: AnyAction) => {
       if (res.error) {

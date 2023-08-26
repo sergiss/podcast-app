@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
@@ -16,7 +16,7 @@ const EpisodeDetail = () => {
     (state: RootState) => state.podcastDetail
   );
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     if (!podcastId || !episodeId) return;
     dispatch(fetchEpisodeDetail({ podcastId, episodeId }));
     return () => {

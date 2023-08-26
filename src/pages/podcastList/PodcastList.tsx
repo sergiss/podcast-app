@@ -1,4 +1,4 @@
-import React, { useLayoutEffect } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { RootState, AppDispatch } from "../../store";
@@ -15,7 +15,7 @@ const PodcastList = () => {
   const { filteredPodcasts, searchFilter, setSearchFilter } =
     usePodcastFilter(podcasts);
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     dispatch(clearPodcastDetail());
     dispatch(fetchTopPodcasts());
   }, [dispatch]);
